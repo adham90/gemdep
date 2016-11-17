@@ -10,6 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20161116232000) do
+
+  create_table "dependencies", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "rgem_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rgem_id"], name: "index_dependencies_on_rgem_id"
+  end
+
+  create_table "rgems", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_rgems_on_name"
+  end
 
 end
