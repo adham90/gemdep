@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :rgem do
-    name 'rake'
+    sequence(:name) { |n| "gem#{n}" }
 
     trait :wirh_dependencies do
       after(:create) do |rgem|

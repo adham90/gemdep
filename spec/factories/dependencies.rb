@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :dependency do
-    name 'MyString'
+    sequence(:name) { |n| "dep#{n}" }
   end
 end

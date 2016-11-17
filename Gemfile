@@ -8,16 +8,22 @@ gem 'deplist', path: '../deplist'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platform: :mri
-  gem "json_matchers"
+end
+
+group :test do
+  gem 'json_matchers'
   gem 'rspec-rails'
-  gem "factory_girl_rails", "~> 4.0"
-  gem 'rubocop', require: false
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+  gem 'guard'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop', require: false
 end
 
 group :production do

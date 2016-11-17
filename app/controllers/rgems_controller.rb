@@ -3,13 +3,11 @@ class RgemsController < ApplicationController
 
   def index
     gems = params[:gems]
-    # os   = params[:os]
-    @rgem = Rgem.includes(:dependencies).where(name: gems)
+    os   = params[:os]
 
-    render json: @rgem
-  end
+    @rgem = Rgem.includes(:dependencies)
+                .where(name: gems, 'dependencies.os_type' => os)
 
-  def show
     render json: @rgem
   end
 
