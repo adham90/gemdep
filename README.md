@@ -1,24 +1,31 @@
-# README
+# Setup the environment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application requires:
 
-Things you may want to cover:
+- Ruby [2.2.\*, 2.3.*]
+- Rails 5
 
-* Ruby version
+**Using RVM**
 
-* System dependencies
+If you're using RVM then you might want to run
 
-* Configuration
+> $ rvm use --create --ruby-version 2.3.0@gemdep
 
-* Database creation
+### Installation
 
-* Database initialization
+To get rolling, start by copying config/database.yml.example into config/database.yml
 
-* How to run the test suite
+> $ cp config/database.yml.example config/database.yml
 
-* Services (job queues, cache servers, search engines, etc.)
+And update the database configuration settings according to your environment, then bin/setup
 
-* Deployment instructions
+> $ cd gemdep/<br>
+> $ bin/setup
 
-* ...
+After setup finish run the server.
+
+> $ rails server
+
+run test.
+
+> $ rspec
