@@ -3,9 +3,7 @@ class RgemsController < ApplicationController
     gems = params[:gems]
     os   = params[:os]
 
-    @rgem = Rgem.includes(:dependencies)
-                .where(name: gems, 'dependencies.os_type' => os)
-
+    @rgem = Rgem.system_dependencies(gems, os)
     render json: @rgem
   end
 end

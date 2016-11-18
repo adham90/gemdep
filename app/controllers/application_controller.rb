@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::API
-  include ActionController::Serialization
-
   rescue_from ActiveRecord::RecordNotFound do
     render json: { error: 'record not found' }, status: 404
     nil

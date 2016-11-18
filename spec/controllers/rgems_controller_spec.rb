@@ -14,8 +14,7 @@ RSpec.describe RgemsController, type: :controller do
     it 'should return correct data' do
       get :index, params: { gems: rgem.name, os: 'linux' }
 
-      body = JSON.parse(response.body)
-      dependencies = body[0]['dependencies'].map { |dep| dep['name'] }
+      dependencies = JSON.parse(response.body)
       data = rgem.dependencies.map { |dep| dep['name'] }
 
       expect(dependencies).to eq(data)
