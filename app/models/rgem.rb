@@ -8,10 +8,14 @@ class Rgem < ApplicationRecord
                               .where(name: gems, 'dependencies.os_type' => os)
     return [] unless system_dependencies
 
+    unknown_gems = gems - system_dependencies.map(&:name)
+
     system_dependencies = system_dependencies.map do |pkg|
       pkg.dependencies.map(&:name)
     end
 
     system_dependencies.flatten!
+
+    { dependencies: system_dependencies, unknown: unknown_gems }
   end
 end

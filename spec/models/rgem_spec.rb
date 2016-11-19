@@ -15,22 +15,38 @@ RSpec.describe Rgem, type: :model do
       create :dependency, name: 'tmux',
                           rgem: rgem, os_type: 'linux'
     end
+    let(:gems) { [rgem.name, 'unknown_gem'] }
+    let(:system_dependencies) { Rgem.system_dependencies(gems, os) }
 
     context '#linux' do
-      it 'should return array of linux system_dependencies only' do
-        os   = 'linux'
-        gems = [rgem.name]
+      let(:os) { 'linux' }
 
-        expect(Rgem.system_dependencies(gems, os)).to eq([vim.name, tmux.name])
+      it 'should return array of linux system_dependencies only' do
+        dependencies = system_dependencies[:dependencies]
+
+        expect(dependencies).to eq([vim.name, tmux.name])
+      end
+
+      it 'should return unknown_gems' do
+        unknown_gems = system_dependencies[:unknown]
+
+        expect(unknown_gems).to eq([gems[1]])
       end
     end
 
     context '#macosx' do
-      it 'should return array of macosx system_dependencies only' do
-        os   = 'macosx'
-        gems = [rgem.name]
+      let(:os) { 'macosx' }
 
-        expect(Rgem.system_dependencies(gems, os)).to eq([docker.name])
+      it 'should return array of macosx system_dependencies only' do
+        dependencies = system_dependencies[:dependencies]
+
+        expect(dependencies).to eq([docker.name])
+      end
+
+      it 'should return unknown_gems' do
+        unknown_gems = system_dependencies[:unknown]
+
+        expect(unknown_gems).to eq([gems[1]])
       end
     end
   end

@@ -46,7 +46,7 @@ GEM
     coderay (1.1.1)
     colorize (0.7.7)
     concurrent-ruby (1.0.2)
-    deplist (0.5.18)
+    deplist (0.5.20)
       colorize (~> 0.7.7)
       httparty (~> 0.14.0)
       json
