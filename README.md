@@ -9,19 +9,27 @@ This application requires:
 
 If you're using RVM then you might want to run
 
-> $ rvm use --create --ruby-version 2.3.0@gemdep
+```bash
+$ rvm use --create --ruby-version 2.3.0@gemdep
+```
 
 ### Installation
 
-Update the database configuration settings according to your environment, then bin/setup
+Update the database configuration settings according to your environment, then run `bin/setup`.
 
-> $ cd gemdep/<br>
-> $ bin/setup
+```bash
+$ cd gemdep
+$ bin/setup
+```
 
-After setup finish run the server.
+After `bin/setup` finishes, run the server.
 
-> $ rails server
+```bash
+$ rails server
+```
 
 run test.
 
-> $ rspec
+```bash
+$ rspec
+```
